@@ -1,4 +1,4 @@
-import { Component,input } from '@angular/core';
+import { Component,signal } from '@angular/core';
 import { DUMMY_USERS } from './dummy-users';
 import { UserDetails } from './user-details';
 
@@ -12,18 +12,21 @@ const randomInxdex= Math.floor(Math.random() * DUMMY_USERS.length);
   styleUrl: './user.component.scss'
 })
 export class UserComponent {
+  selectedUser = signal<UserDetails[]>(DUMMY_USERS);
 
-  selectedUser:UserDetails = DUMMY_USERS[randomInxdex];
-  constructor(){
-console.log(randomInxdex);
+  // get users(){
+  //   return  'assets/users/'+this.selectedUser().avatar
+  // }
 
-  }
+  constructor(){}
 
   ngOnInit(){
 
   }
 
-// get users(){
-//   return DUMMY_USERS
-// }
+  onSelected(){
+    // const randomInxdex= Math.floor(Math.random() * DUMMY_USERS.length);
+    // this.selectedUser.set(DUMMY_USERS[randomInxdex])
+  }
+
 }
